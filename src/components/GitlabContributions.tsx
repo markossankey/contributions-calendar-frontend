@@ -19,9 +19,9 @@ export const GitlabContributions = () => {
   return (
     contributions && (
       <div>
-        <Typography.Title>
+        <Typography.Paragraph>
           /gitlab/{gitlabUsername}/contributions
-        </Typography.Title>
+        </Typography.Paragraph>
         <div
           style={{
             display: "grid",

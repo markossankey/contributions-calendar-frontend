@@ -1,16 +1,26 @@
 import axios from "axios";
+import {
+  CombinedContributionResponse,
+  IndividualContributionResponse,
+} from "../types/ContributionTypes";
 
-const { get } = axios.create({ baseURL: "http://localhost:3000" });
+const { get } = axios.create({
+  baseURL: "https://contribution-api.herokuapp.com/",
+});
 
 export const ContributionApi = {
   getCombinedContributions: (params: CombinedContributionsParams) =>
-    get("/contributions", { params }),
+    get<CombinedContributionResponse>("/contributions", { params }),
 
   getGitlabContributions: (gitlabUsername: GitlabUsername) =>
-    get(`/gitlab/${gitlabUsername}/contributions`),
+    get<IndividualContributionResponse<"Gitlab">>(
+      `/gitlab/${gitlabUsername}/contributions`
+    ),
 
   getGithubContributions: (githubUsername: GithubUsername) =>
-    get(`/github/${githubUsername}/contributions`),
+    get<IndividualContributionResponse<"Github">>(
+      `/github/${githubUsername}/contributions`
+    ),
 };
 
 type GithubUsername = string;

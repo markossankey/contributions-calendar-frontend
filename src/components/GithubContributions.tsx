@@ -19,9 +19,9 @@ export const GithubContributions = () => {
   return (
     contributions && (
       <div>
-        <Typography.Title>
+        <Typography.Paragraph>
           /github/{githubUsername}/contributions
-        </Typography.Title>
+        </Typography.Paragraph>
         <div
           style={{
             display: "grid",
